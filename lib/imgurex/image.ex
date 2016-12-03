@@ -22,6 +22,13 @@ defmodule Imgurex.Image do
     |> build_image_struct
   end
 
+  def upload(path, client_id) do
+    "#{@base_url}/upload"
+    |> HTTPoison.post!(prepare_image(path), ["Authorization": "Client-ID #{client_id}"])
+    |> Map.get(:body)
+    |> Poison.decode!
+  end
+
   defp build_image_struct(data) do
     %__MODULE__{id: data["id"],
                 title: data["title"],
@@ -33,5 +40,12 @@ defmodule Imgurex.Image do
 		height: data["height"],
 		nsfw: data["nsfw"],
 		link: data["link"]}
+  end
+
+  defp prepare_image(path) do
+    path
+    |> File.read!
+    |> Base.encode64
+    |> Poison.encode!
   end
 end
