@@ -11,10 +11,11 @@ defmodule Imgurex.Mixfile do
   end
 
   def application do
-    [applications: [:logger]]
+    [applications: [:logger, :httpoison]]
   end
 
   defp deps do
-    []
+    [{:httpoison, "~> 0.10"},
+     {:poison, "~> 3.0"}]
   end
 end
