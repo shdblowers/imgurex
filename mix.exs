@@ -16,6 +16,7 @@ defmodule Imgurex.Mixfile do
 
   defp deps do
     [{:httpoison, "~> 0.10"},
-     {:poison, "~> 3.0"}]
+     {:poison, "~> 3.0"},
+     {:meck, "~> 0.8"}]
   end
 end
