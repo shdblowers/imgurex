@@ -30,7 +30,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 client_id = "YOUR ID"
 image_id = "THE IMAGE'S ID"
 
-Imgurex.Image.info!(image_id, client_id)
+Imgurex.Image.info(image_id, client_id)
 ```
 
 ```elixir
