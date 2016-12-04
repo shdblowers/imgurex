@@ -1,2 +1,0 @@
-defmodule Imgurex do
-end
