@@ -33,13 +33,13 @@ defmodule Imgurex.ImageTest do
   end
 
   test "uploading an image" do
-    expected = "uploaded image data"
+    expected = %Image{id: "uHi876l", title: "Test Upload"}
 
     stub =
       fn("https://api.imgur.com/3/upload",
          _,
          ["Authorization": "Client-ID 12149508e8b758f"]) ->
-	%HTTPoison.Response{body: Poison.encode!(expected)}
+	%HTTPoison.Response{body: Poison.encode!(%{data: expected})}
       end
     :meck.expect(HTTPoison, :post!, stub)
 
