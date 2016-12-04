@@ -33,7 +33,7 @@ defmodule Imgurex.ImageTest do
   end
 
   test "uploading an image" do
-    expected = %Image{id: "uHi876l", title: "Test Upload"}
+    expected = %Image{id: "uHi876l", link: "http://i.imgur.com/uHi876l.jpg"}
 
     stub =
       fn("https://api.imgur.com/3/upload",

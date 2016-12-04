@@ -1,5 +1,7 @@
 defmodule Imgurex.Image do
 
+  @enforce_keys [:id, :link]
+  
   defstruct [:id,
 	     :title,
 	     :description,
