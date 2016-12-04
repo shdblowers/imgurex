@@ -10,4 +10,7 @@ otp_release:
   - 19.0
   - 19.1
 
+env:
+  - MIX_ENV=test
+
 script: mix coveralls.travis
