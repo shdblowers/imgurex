@@ -2,7 +2,7 @@
 
 **Adapter for Imgur API**
 
-[![Build Status](https://travis-ci.org/shdblowers/imgurex.svg?branch=master)](https://travis-ci.org/shdblowers/imgurex)
+[![Build Status](https://travis-ci.org/shdblowers/imgurex.svg?branch=master)](https://travis-ci.org/shdblowers/imgurex) [![Coverage Status](https://coveralls.io/repos/github/shdblowers/imgurex/badge.svg?branch=master)](https://coveralls.io/github/shdblowers/imgurex?branch=master)
 
 ## Installation
 
