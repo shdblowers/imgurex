@@ -31,4 +31,20 @@ defmodule Imgurex.ImageTest do
 
     assert expected == actual
   end
+
+  test "uploading an image" do
+    expected = "uploaded image data"
+
+    stub =
+      fn("https://api.imgur.com/3/upload",
+         _,
+         ["Authorization": "Client-ID 12149508e8b758f"]) ->
+	%HTTPoison.Response{body: Poison.encode!(expected)}
+      end
+    :meck.expect(HTTPoison, :post!, stub)
+
+    actual = Image.upload("test/imgurex/test_image.jpeg", "12149508e8b758f")
+
+    assert expected == actual
+  end
 end
