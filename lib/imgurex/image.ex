@@ -27,6 +27,8 @@ defmodule Imgurex.Image do
     |> HTTPoison.post!(prepare_image(path), ["Authorization": "Client-ID #{client_id}"])
     |> Map.get(:body)
     |> Poison.decode!
+    |> Map.get("data")
+    |> build_image_struct
   end
 
   defp build_image_struct(data) do

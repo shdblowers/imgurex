@@ -32,3 +32,9 @@ image_id = "THE IMAGE'S ID"
 
 Imgurex.Image.info!(image_id, client_id)
 ```
+
+```elixir
+client_id = "YOUR CLIENT ID"
+
+Imgurex.Image.upload("test/imgurex/test_image.jpeg", client_id)
+```
