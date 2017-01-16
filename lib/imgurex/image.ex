@@ -18,15 +18,17 @@ defmodule Imgurex.Image do
   def info(id, client_id) do
     "#{@base_url}/image/#{id}"
     |> HTTPoison.get!(["Authorization": "Client-ID #{client_id}"])
-    |> Map.get(:body)
-    |> Poison.decode!
-    |> Map.get("data")
-    |> build_image_struct
+    |> process_response
   end
 
   def upload(path, client_id) do
     "#{@base_url}/upload"
     |> HTTPoison.post!(prepare_image(path), ["Authorization": "Client-ID #{client_id}"])
+    |> process_response
+  end
+
+  defp process_response(response) do
+    response
     |> Map.get(:body)
     |> Poison.decode!
     |> Map.get("data")
