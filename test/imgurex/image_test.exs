@@ -23,13 +23,27 @@ defmodule Imgurex.ImageTest do
 
     stub = fn("https://api.imgur.com/3/image/Pc123G7",
               ["Authorization": "Client-ID 12149508e8b758f"]) ->
-	%HTTPoison.Response{body: Poison.encode!(%{data: expected})}
+	%HTTPoison.Response{body: Poison.encode!(%{success: true, data: expected})}
     end
     :meck.expect(HTTPoison, :get!, stub)
 
     actual = Image.info("Pc123G7", "12149508e8b758f")
 
-    assert expected == actual
+    assert {:ok, expected} == actual
+  end
+
+  test "unsuccessful get of ticket info" do
+    expected = "Unable to find image with the id, 1234567890"
+
+    stub = fn("https://api.imgur.com/3/image/1234567890",
+              ["Authorization": "Client-ID 12149508e8b758f"]) ->
+      %HTTPoison.Response{body: Poison.encode!(%{success: false, data: %{error: expected}})}
+    end
+    :meck.expect(HTTPoison, :get!, stub)
+
+    actual = Image.info("1234567890", "12149508e8b758f")
+
+    assert {:error, expected} == actual
   end
 
   test "uploading an image" do
@@ -39,12 +53,12 @@ defmodule Imgurex.ImageTest do
       fn("https://api.imgur.com/3/upload",
          _,
          ["Authorization": "Client-ID 12149508e8b758f"]) ->
-	%HTTPoison.Response{body: Poison.encode!(%{data: expected})}
+	%HTTPoison.Response{body: Poison.encode!(%{success: true, data: expected})}
       end
     :meck.expect(HTTPoison, :post!, stub)
 
     actual = Image.upload("test/imgurex/test_image.jpeg", "12149508e8b758f")
 
-    assert expected == actual
+    assert {:ok, expected} == actual
   end
 end

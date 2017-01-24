@@ -28,11 +28,17 @@ defmodule Imgurex.Image do
   end
 
   defp process_response(response) do
-    response
-    |> Map.get(:body)
-    |> Poison.decode!
-    |> Map.get("data")
-    |> build_image_struct
+    decoded_body =
+      response
+      |> Map.get(:body)
+      |> Poison.decode!
+
+    case decoded_body do
+      %{"success" => true} ->
+	{:ok, build_image_struct(Map.get(decoded_body, "data"))}
+      %{"success" => false} ->
+	{:error, decoded_body |> Map.get("data") |> Map.get("error")}
+    end
   end
 
   defp build_image_struct(data) do
