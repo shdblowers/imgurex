@@ -1,17 +1,17 @@
 defmodule Imgurex.Image do
 
   @enforce_keys [:id, :link]
-  
+
   defstruct [:id,
-	     :title,
-	     :description,
-	     :datetime,
-	     :type,
-	     :animated,
-	     :width,
-	     :height,
-	     :nsfw,
-	     :link]
+             :title,
+             :description,
+             :datetime,
+             :type,
+             :animated,
+             :width,
+             :height,
+             :nsfw,
+             :link]
 
   @base_url Application.fetch_env!(:imgurex, :base_url)
 
@@ -41,13 +41,13 @@ defmodule Imgurex.Image do
     %__MODULE__{id: data["id"],
                 title: data["title"],
                 description: data["description"],
-		datetime: data["datetime"],
-		type: data["type"],
-		animated: data["animated"],
-		width: data["width"],
-		height: data["height"],
-		nsfw: data["nsfw"],
-		link: data["link"]}
+                datetime: data["datetime"],
+                type: data["type"],
+                animated: data["animated"],
+                width: data["width"],
+                height: data["height"],
+                nsfw: data["nsfw"],
+                link: data["link"]}
   end
 
   defp prepare_image(path) do

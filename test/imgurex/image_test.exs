@@ -11,19 +11,19 @@ defmodule Imgurex.ImageTest do
 
   test "getting info for a ticket" do
     expected = %Image{id: "Pc123G7",
-		      title: "Example Image",
-		      description: "picture of a test",
-		      datetime: 1480768844,
-		      type: "image/jpeg",
-		      animated: false,
-		      width: 1080,
-		      height: 1920,
-		      nsfw: nil,
-		      link: "http://i.imgur.com/Pc123G7.jpg"}
+                      title: "Example Image",
+                      description: "picture of a test",
+                      datetime: 1480768844,
+                      type: "image/jpeg",
+                      animated: false,
+                      width: 1080,
+                      height: 1920,
+                      nsfw: nil,
+                      link: "http://i.imgur.com/Pc123G7.jpg"}
 
     stub = fn("https://api.imgur.com/3/image/Pc123G7",
               ["Authorization": "Client-ID 12149508e8b758f"]) ->
-	%HTTPoison.Response{body: Poison.encode!(%{success: true, data: expected})}
+      %HTTPoison.Response{body: Poison.encode!(%{success: true, data: expected})}
     end
     :meck.expect(HTTPoison, :get!, stub)
 
@@ -53,7 +53,7 @@ defmodule Imgurex.ImageTest do
       fn("https://api.imgur.com/3/upload",
          _,
          ["Authorization": "Client-ID 12149508e8b758f"]) ->
-	%HTTPoison.Response{body: Poison.encode!(%{success: true, data: expected})}
+        %HTTPoison.Response{body: Poison.encode!(%{success: true, data: expected})}
       end
     :meck.expect(HTTPoison, :post!, stub)
 
