@@ -10,6 +10,7 @@ defmodule Imgurex.Image do
              :animated,
              :width,
              :height,
+             :section,
              :nsfw,
              :link]
   @type t :: %__MODULE__{id: String.t,
@@ -20,6 +21,7 @@ defmodule Imgurex.Image do
                          animated: boolean,
                          width: non_neg_integer,
                          height: non_neg_integer,
+                         section: String.t,
                          nsfw: boolean,
                          link: String.t}
 
