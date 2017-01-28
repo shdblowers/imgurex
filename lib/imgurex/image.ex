@@ -12,6 +12,16 @@ defmodule Imgurex.Image do
              :height,
              :nsfw,
              :link]
+  @type t :: %__MODULE__{id: String.t,
+                         title: String.t,
+                         description: String.t,
+                         datetime: non_neg_integer,
+                         type: String.t,
+                         animated: boolean,
+                         width: non_neg_integer,
+                         height: non_neg_integer,
+                         nsfw: boolean,
+                         link: String.t}
 
   @base_url Application.fetch_env!(:imgurex, :base_url)
 
