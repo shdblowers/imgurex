@@ -26,6 +26,5 @@ defmodule Imgurex.Mixfile do
   end
 
    defp aliases do
-     ["test": ["test", "credo --strict"]]
   end
 end
