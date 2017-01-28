@@ -36,15 +36,30 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
 ## Usage
 
+### Image
+
+#### Getting Image Information
+
 ```elixir
 client_id = "YOUR ID"
 image_id = "THE IMAGE'S ID"
 
-Imgurex.Image.info(image_id, client_id)
+Imgurex.Image.info(client_id, image_id)
 ```
+
+#### Uploading an Anonymous Image
 
 ```elixir
 client_id = "YOUR CLIENT ID"
 
-Imgurex.Image.upload("test/imgurex/test_image.jpeg", client_id)
+Imgurex.Image.upload(client_id, "test/imgurex/test_image.jpeg")
+```
+
+### Album
+
+#### Creating an Anonymous Album
+
+```elixir
+client_id = "YOUR CLIENT ID"
+Imgurex.Album.create(client_id)
 ```

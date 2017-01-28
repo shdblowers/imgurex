@@ -27,7 +27,7 @@ defmodule Imgurex.ImageTest do
     end
     :meck.expect(HTTPoison, :get!, stub)
 
-    actual = Image.info("Pc123G7", "12149508e8b758f")
+    actual = Image.info("12149508e8b758f", "Pc123G7")
 
     assert {:ok, expected} == actual
   end
@@ -41,7 +41,7 @@ defmodule Imgurex.ImageTest do
     end
     :meck.expect(HTTPoison, :get!, stub)
 
-    actual = Image.info("1234567890", "12149508e8b758f")
+    actual = Image.info("12149508e8b758f", "1234567890")
 
     assert {:error, expected} == actual
   end
@@ -57,7 +57,7 @@ defmodule Imgurex.ImageTest do
       end
     :meck.expect(HTTPoison, :post!, stub)
 
-    actual = Image.upload("test/imgurex/test_image.jpeg", "12149508e8b758f")
+    actual = Image.upload("12149508e8b758f", "test/imgurex/test_image.jpeg")
 
     assert {:ok, expected} == actual
   end

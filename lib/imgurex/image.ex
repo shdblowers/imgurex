@@ -32,14 +32,14 @@ Functions to upload and manipulate images on Imgur.
   @base_url Application.fetch_env!(:imgurex, :base_url)
 
   @spec info(String.t, String.t) :: %__MODULE__{}
-  def info(id, client_id) do
-    "#{@base_url}/image/#{id}"
+  def info(client_id, image_id) do
+    "#{@base_url}/image/#{image_id}"
     |> HTTPoison.get!(["Authorization": "Client-ID #{client_id}"])
     |> process_response
   end
 
   @spec upload(String.t, String.t) :: %__MODULE__{}
-  def upload(path, client_id) do
+  def upload(client_id, path) do
     "#{@base_url}/upload"
     |> HTTPoison.post!(prepare_image(path), ["Authorization": "Client-ID #{client_id}"])
     |> process_response
