@@ -11,6 +11,7 @@ Functions to manipulate albums on Imgur.
     |> HTTPoison.post!(<<>>, ["Authorization": "Client-ID #{client_id}"])
     |> Map.get(:body)
     |> Poison.decode!()
+    |> Map.get("data")
   end
 
 end
