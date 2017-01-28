@@ -4,11 +4,11 @@
 [![Coverage Status](https://coveralls.io/repos/github/shdblowers/imgurex/badge.svg?branch=master)](https://coveralls.io/github/shdblowers/imgurex?branch=master)
 [![Ebert](https://ebertapp.io/github/shdblowers/imgurex.svg)](https://ebertapp.io/github/shdblowers/imgurex)
 
+**Adapter for Imgur API**
+
 Imgur is an online image hosting and sharing community. The aim of this package is to allow Elixir users to be able to easily interact with the Imgur API.
 
 [Imgur API Documentation](https://api.imgur.com/)
-
-**Adapter for Imgur API**
 
 ## Getting Started
 
