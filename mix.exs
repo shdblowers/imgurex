@@ -8,6 +8,7 @@ defmodule Imgurex.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps(),
+     aliases: aliases(),
      test_coverage: [tool: ExCoveralls],
      preferred_cli_env: ["coveralls": :test, "coverall.travis": :test]]
   end
@@ -20,6 +21,11 @@ defmodule Imgurex.Mixfile do
     [{:httpoison, "~> 0.10"},
      {:poison, "~> 3.0"},
      {:meck, "~> 0.8", only: :test},
-     {:excoveralls, "~> 0.5", only: :test}]
+     {:excoveralls, "~> 0.5", only: :test},
+     {:credo, "~> 0.6", only: [:dev, :test]}]
+  end
+
+   defp aliases do
+     ["test": ["test", "credo --strict"]]
   end
 end

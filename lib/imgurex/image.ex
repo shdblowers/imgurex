@@ -1,4 +1,7 @@
 defmodule Imgurex.Image do
+@moduledoc"""
+Functions to upload and manipulate images on Imgur.
+"""
 
   @enforce_keys [:id, :link]
 
@@ -13,6 +16,7 @@ defmodule Imgurex.Image do
              :section,
              :nsfw,
              :link]
+
   @type t :: %__MODULE__{id: String.t,
                          title: String.t,
                          description: String.t,
@@ -27,12 +31,14 @@ defmodule Imgurex.Image do
 
   @base_url Application.fetch_env!(:imgurex, :base_url)
 
+  @spec info(String.t, String.t) :: %__MODULE__{}
   def info(id, client_id) do
     "#{@base_url}/image/#{id}"
     |> HTTPoison.get!(["Authorization": "Client-ID #{client_id}"])
     |> process_response
   end
 
+  @spec upload(String.t, String.t) :: %__MODULE__{}
   def upload(path, client_id) do
     "#{@base_url}/upload"
     |> HTTPoison.post!(prepare_image(path), ["Authorization": "Client-ID #{client_id}"])
