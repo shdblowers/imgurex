@@ -3,12 +3,12 @@ defmodule Imgurex.Album do
 Functions to manipulate albums on Imgur.
 """
 
-  @base_url Application.fetch_env!(:imgurex, :base_url)
+  alias Imgurex.Imgur
 
   @spec create(String.t) :: map
   def create(client_id) do
-    "#{@base_url}/album"
-    |> HTTPoison.post!(<<>>, ["Authorization": "Client-ID #{client_id}"])
+    "/album"
+    |> Imgur.post!(<<>>, ["Authorization": "Client-ID #{client_id}"])
     |> Map.get(:body)
     |> Poison.decode!()
     |> Map.get("data")

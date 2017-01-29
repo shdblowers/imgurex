@@ -3,6 +3,8 @@ defmodule Imgurex.Image do
 Functions to upload and manipulate images on Imgur.
 """
 
+  alias Imgurex.Imgur
+
   @enforce_keys [:id, :link]
 
   defstruct [:id,
@@ -29,19 +31,17 @@ Functions to upload and manipulate images on Imgur.
                          nsfw: boolean,
                          link: String.t}
 
-  @base_url Application.fetch_env!(:imgurex, :base_url)
-
   @spec info(String.t, String.t) :: %__MODULE__{}
   def info(client_id, image_id) do
-    "#{@base_url}/image/#{image_id}"
-    |> HTTPoison.get!(["Authorization": "Client-ID #{client_id}"])
+    "/image/#{image_id}"
+    |> Imgur.get!(["Authorization": "Client-ID #{client_id}"])
     |> process_response
   end
 
   @spec upload(String.t, String.t) :: %__MODULE__{}
   def upload(client_id, path) do
-    "#{@base_url}/upload"
-    |> HTTPoison.post!(prepare_image(path), ["Authorization": "Client-ID #{client_id}"])
+    "/upload"
+    |> Imgur.post!(prepare_image(path), ["Authorization": "Client-ID #{client_id}"])
     |> process_response
   end
 

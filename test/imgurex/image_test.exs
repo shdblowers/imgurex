@@ -2,9 +2,10 @@ defmodule Imgurex.ImageTest do
   use ExUnit.Case, async: false
 
   alias Imgurex.Image
+  alias Imgurex.Imgur
 
   setup_all do
-    :meck.new(HTTPoison)
+    :meck.new(Imgur)
     on_exit fn -> :meck.unload end
     :ok
   end
@@ -21,11 +22,11 @@ defmodule Imgurex.ImageTest do
                       nsfw: nil,
                       link: "http://i.imgur.com/Pc123G7.jpg"}
 
-    stub = fn("https://api.imgur.com/3/image/Pc123G7",
+    stub = fn("/image/Pc123G7",
               ["Authorization": "Client-ID 12149508e8b758f"]) ->
       %HTTPoison.Response{body: Poison.encode!(%{success: true, data: expected})}
     end
-    :meck.expect(HTTPoison, :get!, stub)
+    :meck.expect(Imgur, :get!, stub)
 
     actual = Image.info("12149508e8b758f", "Pc123G7")
 
@@ -35,11 +36,11 @@ defmodule Imgurex.ImageTest do
   test "unsuccessful get of ticket info" do
     expected = "Unable to find image with the id, 1234567890"
 
-    stub = fn("https://api.imgur.com/3/image/1234567890",
+    stub = fn("/image/1234567890",
               ["Authorization": "Client-ID 12149508e8b758f"]) ->
       %HTTPoison.Response{body: Poison.encode!(%{success: false, data: %{error: expected}})}
     end
-    :meck.expect(HTTPoison, :get!, stub)
+    :meck.expect(Imgur, :get!, stub)
 
     actual = Image.info("12149508e8b758f", "1234567890")
 
@@ -50,12 +51,12 @@ defmodule Imgurex.ImageTest do
     expected = %Image{id: "uHi876l", link: "http://i.imgur.com/uHi876l.jpg"}
 
     stub =
-      fn("https://api.imgur.com/3/upload",
+      fn("/upload",
          _,
          ["Authorization": "Client-ID 12149508e8b758f"]) ->
         %HTTPoison.Response{body: Poison.encode!(%{success: true, data: expected})}
       end
-    :meck.expect(HTTPoison, :post!, stub)
+    :meck.expect(Imgur, :post!, stub)
 
     actual = Image.upload("12149508e8b758f", "test/imgurex/test_image.jpeg")
 
