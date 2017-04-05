@@ -1,3 +1,5 @@
+config/dev.exs
+
 ### Elixir ###
 /_build
 /cover

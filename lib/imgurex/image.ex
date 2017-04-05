@@ -31,17 +31,19 @@ defmodule Imgurex.Image do
                          nsfw: boolean,
                          link: String.t}
 
-  @spec info(String.t, String.t) :: %__MODULE__{}
-  def info(client_id, image_id) do
+  @client_id Application.get_env(:imgurex, :client_id)
+
+  @spec info(String.t) :: %__MODULE__{}
+  def info(image_id) do
     "/image/#{image_id}"
-    |> Imgur.get!(["Authorization": "Client-ID #{client_id}"])
+    |> Imgur.get!(["Authorization": "Client-ID #{@client_id}"])
     |> process_response
   end
 
-  @spec upload(String.t, String.t) :: %__MODULE__{}
-  def upload(client_id, path) do
+  @spec upload(String.t) :: %__MODULE__{}
+  def upload(path) do
     "/upload"
-    |> Imgur.post!(prepare_image(path), ["Authorization": "Client-ID #{client_id}"])
+    |> Imgur.post!(prepare_image(path), ["Authorization": "Client-ID #{@client_id}"])
     |> process_response
   end
 

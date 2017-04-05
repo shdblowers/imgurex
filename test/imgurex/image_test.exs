@@ -3,7 +3,6 @@ defmodule Imgurex.ImageTest do
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   alias Imgurex.Image
-  alias Imgurex.Imgur
 
   setup_all do
     ExVCR.Config.cassette_library_dir("test/fixtures/vcr_cassettes/image")
@@ -24,7 +23,7 @@ defmodule Imgurex.ImageTest do
 
     ExVCR.Config.filter_request_headers("Authorization")
     use_cassette "info" do
-      actual = Image.info("fake_client_id", "coZb0HC")
+      actual = Image.info("coZb0HC")
 
       assert {:ok, expected} == actual
     end
@@ -36,7 +35,7 @@ defmodule Imgurex.ImageTest do
 
     ExVCR.Config.filter_request_headers("Authorization")
     use_cassette "unable_to_find" do
-      actual = Image.info("fake_client_id", "1234567890")
+      actual = Image.info("1234567890")
 
       assert {:error, expected} == actual
     end
@@ -58,7 +57,7 @@ defmodule Imgurex.ImageTest do
 
     ExVCR.Config.filter_request_headers("Authorization")
     use_cassette "upload" do
-      actual = Image.upload("fake_client_id", "test/imgurex/test_image.jpeg")
+      actual = Image.upload("test/imgurex/test_image.jpeg")
 
       assert {:ok, expected} == actual
     end
