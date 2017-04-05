@@ -1,0 +1,41 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "***"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.imgur.com/3/image/coZb0HC"
+    },
+    "response": {
+      "body": "{\"data\":{\"id\":\"coZb0HC\",\"title\":\"Horse tries out hoodie zipper\",\"description\":null,\"datetime\":1491247943,\"type\":\"image\\/gif\",\"animated\":true,\"width\":720,\"height\":1280,\"size\":73077840,\"views\":2083190,\"bandwidth\":152235025509600,\"vote\":null,\"favorite\":false,\"nsfw\":false,\"section\":\"aww\",\"account_url\":null,\"account_id\":null,\"is_ad\":false,\"tags\":[],\"in_gallery\":true,\"mp4\":\"http:\\/\\/i.imgur.com\\/coZb0HC.mp4\",\"gifv\":\"http:\\/\\/i.imgur.com\\/coZb0HC.gifv\",\"mp4_size\":3497981,\"link\":\"http:\\/\\/i.imgur.com\\/coZb0HCh.gif\",\"looping\":true},\"success\":true,\"status\":200}",
+      "headers": {
+        "Content-Type": "application/json",
+        "Access-Control-Expose-Headers": "X-RateLimit-ClientLimit, X-RateLimit-ClientRemaining, X-RateLimit-UserLimit, X-RateLimit-UserRemaining, X-RateLimit-UserReset",
+        "ETag": "\"7f7986da9239429556007c550cfc4c174c55d6d3\"",
+        "Cache-Control": "max-age=60, stale-while-revalidate=600, stale-if-error=86400, public",
+        "Fastly-Debug-Digest": "65bf56293b656faf766ea9e6f18681bde0cc47a690902b48640b909a227d23d3",
+        "Content-Length": "557",
+        "Accept-Ranges": "bytes",
+        "Date": "Tue, 04 Apr 2017 16:48:09 GMT",
+        "Age": "47",
+        "Connection": "keep-alive",
+        "X-Served-By": "cache-iad2129-IAD, cache-lcy1121-LCY",
+        "X-Cache": "HIT, MISS",
+        "X-Cache-Hits": "1, 0",
+        "Vary": "Accept-Encoding",
+        "access-control-allow-methods": "GET, PUT, POST, DELETE, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-allow-headers": "Authorization, Content-Type, Accept, X-Mashape-Authorization, IMGURPLATFORM, IMGURUIDJAFO, sessionCount, IMGURMWBETA, IMGURMWBETAOPTIN",
+        "Server": "cat factory 1.0",
+        "X-Redux": "1",
+        "X-Frame-Options": "DENY"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

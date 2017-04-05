@@ -1,0 +1,51 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "***"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.imgur.com/3/album"
+    },
+    "response": {
+      "body": "{\"data\":{\"id\":\"ChP83\",\"deletehash\":\"ghGmuwuHQ6pUMxN\"},\"success\":true,\"status\":200}",
+      "headers": {
+        "Content-Type": "application/json",
+        "X-Post-Rate-Limit-Limit": "1250",
+        "X-Post-Rate-Limit-Remaining": "1248",
+        "X-Post-Rate-Limit-Reset": "2672",
+        "Set-Cookie": "IMGURSESSION=6797c5a7c90fe653681e7ab9870e3c8d; path=/; domain=.imgur.com",
+        "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+        "Pragma": "no-cache",
+        "Access-Control-Expose-Headers": "X-RateLimit-ClientLimit, X-RateLimit-ClientRemaining, X-RateLimit-UserLimit, X-RateLimit-UserRemaining, X-RateLimit-UserReset",
+        "X-RateLimit-ClientLimit": "12500",
+        "X-RateLimit-ClientRemaining": "12489",
+        "X-RateLimit-UserLimit": "500",
+        "X-RateLimit-UserRemaining": "487",
+        "X-RateLimit-UserReset": "1491383412",
+        "ETag": "\"fdff8ffb24cae4e3da378538836226fff9205b4c\"",
+        "Cache-Control": "max-age=60, stale-while-revalidate=600, stale-if-error=86400, public",
+        "Accept-Ranges": "bytes",
+        "Fastly-Debug-Digest": "1921fc5376e7650b7ada9df97f2500b73038f084780bbda1911098367a14ac9f",
+        "Transfer-Encoding": "chunked",
+        "Date": "Wed, 05 Apr 2017 08:25:09 GMT",
+        "Connection": "keep-alive",
+        "X-Served-By": "cache-iad2126-IAD, cache-lcy1121-LCY",
+        "X-Cache": "MISS, MISS",
+        "X-Cache-Hits": "0, 0",
+        "Vary": "Accept-Encoding",
+        "access-control-allow-methods": "GET, PUT, POST, DELETE, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-allow-headers": "Authorization, Content-Type, Accept, X-Mashape-Authorization, IMGURPLATFORM, IMGURUIDJAFO, sessionCount, IMGURMWBETA, IMGURMWBETAOPTIN",
+        "Server": "cat factory 1.0",
+        "X-Redux": "1",
+        "X-Frame-Options": "DENY"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
