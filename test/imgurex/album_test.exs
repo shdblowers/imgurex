@@ -11,8 +11,8 @@ defmodule Imgurex.AlbumTest do
   end
 
   test "creating an anonymous album" do
-    expected = %{"id" => "ChP83",
-                 "deletehash" => "ghGmuwuHQ6pUMxN"}
+    expected = %Album{id: "ChP83",
+                      deletehash: "ghGmuwuHQ6pUMxN"}
 
     ExVCR.Config.filter_request_headers("Authorization")
     use_cassette "anonymous" do
