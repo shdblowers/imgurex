@@ -1,7 +1,7 @@
 defmodule Imgurex.Image do
-@moduledoc"""
-Functions to upload and manipulate images on Imgur.
-"""
+  @moduledoc """
+  Functions to upload and manipulate images on Imgur.
+  """
 
   alias Imgurex.Imgur
 

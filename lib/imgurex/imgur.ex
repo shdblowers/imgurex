@@ -1,7 +1,7 @@
 defmodule Imgurex.Imgur do
-@moduledoc"""
-Overrides for default HTTPoison methods to interact with Imgur API.
-"""
+  @moduledoc """
+  Overrides for default HTTPoison methods to interact with Imgur API.
+  """
 
   use HTTPoison.Base
 

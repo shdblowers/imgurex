@@ -1,7 +1,7 @@
 defmodule Imgurex.Album do
-@moduledoc"""
-Functions to manipulate albums on Imgur.
-"""
+  @moduledoc """
+  Functions to manipulate albums on Imgur.
+  """
 
   alias Imgurex.Imgur
 
