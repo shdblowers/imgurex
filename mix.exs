@@ -25,6 +25,6 @@ defmodule Imgurex.Mixfile do
      {:exvcr, "~> 0.8.7", only: :test}]
   end
 
-   defp aliases do
+  defp aliases do
   end
 end

@@ -13,4 +13,4 @@ env:
 
 script:
   - mix coveralls.travis
-  - mix credo --strict
+  - mix credo

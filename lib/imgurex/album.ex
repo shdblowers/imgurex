@@ -14,7 +14,7 @@ defmodule Imgurex.Album do
   @client_id Application.get_env(:imgurex, :client_id)
 
   @spec create() :: %__MODULE__{}
-  def create() do
+  def create do
     "/album"
     |> Imgur.post!(<<>>, ["Authorization": "Client-ID #{@client_id}"])
     |> Map.get(:body)
