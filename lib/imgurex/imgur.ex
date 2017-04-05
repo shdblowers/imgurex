@@ -5,7 +5,7 @@ defmodule Imgurex.Imgur do
 
   use HTTPoison.Base
 
-  @base_url Application.fetch_env!(:imgurex, :base_url)
+  @base_url "https://api.imgur.com/3"
 
   @spec process_url(binary) :: binary
   def process_url(url) do
