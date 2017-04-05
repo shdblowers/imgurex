@@ -16,23 +16,22 @@ In order to start using the API you need to register in order to receive a clien
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+If [available in Hex](https://hex.pm/docs/publish), the package can be installed by adding `imgurex` to your list of dependencies:
 
-  1. Add `imgurex` to your list of dependencies in `mix.exs`:
+```elixir
+def deps do
+  [{:imgurex, "~> 0.1.0"}]
+end
+```
 
-    ```elixir
-    def deps do
-      [{:imgurex, "~> 0.1.0"}]
-    end
-    ```
+You will also need to set your client id in config:
 
-  2. Ensure `imgurex` is started before your application:
+```elixir
+use Mix.Config
 
-    ```elixir
-    def application do
-      [applications: [:imgurex]]
-    end
-    ```
+config :imgurex,
+  client_id: "dNqgBNYyLAmmMAx"
+```
 
 ## Usage
 
@@ -41,18 +40,16 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 #### Getting Image Information
 
 ```elixir
-client_id = "YOUR ID"
-image_id = "THE IMAGE'S ID"
-
-Imgurex.Image.info(client_id, image_id)
+iex> image_id = "THE IMAGE'S ID"
+iex> Imgurex.Image.info(image_id)
+%Imgurex.Image{ ... }
 ```
 
 #### Uploading an Anonymous Image
 
 ```elixir
-client_id = "YOUR CLIENT ID"
-
-Imgurex.Image.upload(client_id, "test/imgurex/test_image.jpeg")
+iex> Imgurex.Image.upload("test/imgurex/test_image.jpeg")
+%Imgurex.Image{ ... }
 ```
 
 ### Album
@@ -60,6 +57,6 @@ Imgurex.Image.upload(client_id, "test/imgurex/test_image.jpeg")
 #### Creating an Anonymous Album
 
 ```elixir
-client_id = "YOUR CLIENT ID"
-Imgurex.Album.create(client_id)
+iex> Imgurex.Album.create(client_id)
+%Imgurex.Album{ ... }
 ```
