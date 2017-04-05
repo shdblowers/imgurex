@@ -20,9 +20,9 @@ defmodule Imgurex.Mixfile do
   defp deps do
     [{:httpoison, "~> 0.10"},
      {:poison, "~> 3.0"},
-     {:meck, "~> 0.8", only: :test},
      {:excoveralls, "~> 0.5", only: :test},
-     {:credo, "~> 0.6", only: [:dev, :test]}]
+     {:credo, "~> 0.6", only: [:dev, :test]},
+     {:exvcr, "~> 0.8.7", only: :test}]
   end
 
    defp aliases do

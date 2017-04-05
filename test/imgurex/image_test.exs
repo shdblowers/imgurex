@@ -1,65 +1,67 @@
 defmodule Imgurex.ImageTest do
   use ExUnit.Case, async: false
+  use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   alias Imgurex.Image
   alias Imgurex.Imgur
 
   setup_all do
-    :meck.new(Imgur)
-    on_exit fn -> :meck.unload end
-    :ok
+    ExVCR.Config.cassette_library_dir("test/fixtures/vcr_cassettes/image")
+    HTTPoison.start
   end
 
   test "getting info for a ticket" do
-    expected = %Image{id: "Pc123G7",
-                      title: "Example Image",
-                      description: "picture of a test",
-                      datetime: 1480768844,
-                      type: "image/jpeg",
-                      animated: false,
-                      width: 1080,
-                      height: 1920,
-                      nsfw: nil,
-                      link: "http://i.imgur.com/Pc123G7.jpg"}
+    expected = %Image{id: "coZb0HC",
+                      title: "Horse tries out hoodie zipper",
+                      description: nil,
+                      datetime: 1491247943,
+                      type: "image/gif",
+                      animated: true,
+                      width: 720,
+                      height: 1280,
+                      nsfw: false,
+                      link: "http://i.imgur.com/coZb0HCh.gif"}
 
-    stub = fn("/image/Pc123G7",
-              ["Authorization": "Client-ID 12149508e8b758f"]) ->
-      %HTTPoison.Response{body: Poison.encode!(%{success: true, data: expected})}
+    ExVCR.Config.filter_request_headers("Authorization")
+    use_cassette "info" do
+      actual = Image.info("fake_client_id", "coZb0HC")
+
+      assert {:ok, expected} == actual
     end
-    :meck.expect(Imgur, :get!, stub)
-
-    actual = Image.info("12149508e8b758f", "Pc123G7")
-
-    assert {:ok, expected} == actual
+    ExVCR.Config.filter_request_headers(nil)
   end
 
   test "unsuccessful get of ticket info" do
-    expected = "Unable to find image with the id, 1234567890"
+    expected = "Unable to find an image with the id, 1234567890"
 
-    stub = fn("/image/1234567890",
-              ["Authorization": "Client-ID 12149508e8b758f"]) ->
-      %HTTPoison.Response{body: Poison.encode!(%{success: false, data: %{error: expected}})}
+    ExVCR.Config.filter_request_headers("Authorization")
+    use_cassette "unable_to_find" do
+      actual = Image.info("fake_client_id", "1234567890")
+
+      assert {:error, expected} == actual
     end
-    :meck.expect(Imgur, :get!, stub)
-
-    actual = Image.info("12149508e8b758f", "1234567890")
-
-    assert {:error, expected} == actual
+    ExVCR.Config.filter_request_headers(nil)
   end
 
   test "uploading an image" do
-    expected = %Image{id: "uHi876l", link: "http://i.imgur.com/uHi876l.jpg"}
+    expected = %Image{description: nil,
+                      nsfw: nil,
+                      section: nil,
+                      title: nil,
+                      animated: false,
+                      datetime: 1491380311,
+                      height: 400,
+                      id: "dWWsW7B",
+                      link: "http://i.imgur.com/dWWsW7B.jpg",
+                      type: "image/jpeg",
+                      width: 400}
 
-    stub =
-      fn("/upload",
-         _,
-         ["Authorization": "Client-ID 12149508e8b758f"]) ->
-        %HTTPoison.Response{body: Poison.encode!(%{success: true, data: expected})}
-      end
-    :meck.expect(Imgur, :post!, stub)
+    ExVCR.Config.filter_request_headers("Authorization")
+    use_cassette "upload" do
+      actual = Image.upload("fake_client_id", "test/imgurex/test_image.jpeg")
 
-    actual = Image.upload("12149508e8b758f", "test/imgurex/test_image.jpeg")
-
-    assert {:ok, expected} == actual
+      assert {:ok, expected} == actual
+    end
+    ExVCR.Config.filter_request_headers(nil)
   end
 end

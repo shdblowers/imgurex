@@ -1,0 +1,41 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "***"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.imgur.com/3/image/1234567890"
+    },
+    "response": {
+      "body": "{\"data\":{\"error\":\"Unable to find an image with the id, 1234567890\",\"request\":\"\\/3\\/image\\/1234567890\",\"method\":\"GET\"},\"success\":false,\"status\":404}",
+      "headers": {
+        "Content-Type": "application/json",
+        "Access-Control-Expose-Headers": "X-RateLimit-ClientLimit, X-RateLimit-ClientRemaining, X-RateLimit-UserLimit, X-RateLimit-UserRemaining, X-RateLimit-UserReset",
+        "ETag": "\"a28193931b8cd35af088b870156a3dcca5396e80\"",
+        "Cache-Control": "max-age=60, stale-while-revalidate=600, stale-if-error=86400, public",
+        "Fastly-Debug-Digest": "b0e234ed7abcd82a93f7856ea3d0ef7550dfb0973a508efb6c9e1d16de6d8241",
+        "Content-Length": "147",
+        "Accept-Ranges": "bytes",
+        "Date": "Wed, 05 Apr 2017 08:18:33 GMT",
+        "Age": "163",
+        "Connection": "keep-alive",
+        "X-Served-By": "cache-iad2144-IAD, cache-lcy1138-LCY",
+        "X-Cache": "MISS, HIT",
+        "X-Cache-Hits": "0, 1",
+        "Vary": "Accept-Encoding",
+        "access-control-allow-methods": "GET, PUT, POST, DELETE, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-allow-headers": "Authorization, Content-Type, Accept, X-Mashape-Authorization, IMGURPLATFORM, IMGURUIDJAFO, sessionCount, IMGURMWBETA, IMGURMWBETAOPTIN",
+        "Server": "cat factory 1.0",
+        "X-Redux": "1",
+        "X-Frame-Options": "DENY"
+      },
+      "status_code": 404,
+      "type": "ok"
+    }
+  }
+]

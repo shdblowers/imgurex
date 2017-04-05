@@ -1,28 +1,25 @@
 defmodule Imgurex.AlbumTest do
   use ExUnit.Case, async: false
+  use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   alias Imgurex.Album
   alias Imgurex.Imgur
 
   setup_all do
-    :meck.new(Imgur)
-    on_exit fn -> :meck.unload end
-    :ok
+    ExVCR.Config.cassette_library_dir("test/fixtures/vcr_cassettes/album")
+    HTTPoison.start
   end
 
   test "creating an anonymous album" do
-    expected = %{"id" => "lvyV0",
-                 "deletehash" => "5WjtBwpt1aV1v8X"}
+    expected = %{"id" => "ChP83",
+                 "deletehash" => "ghGmuwuHQ6pUMxN"}
 
-    stub = fn("/album",
-              "",
-              ["Authorization": "Client-ID 12149508e8b758f"]) ->
-      %HTTPoison.Response{body: Poison.encode!(%{success: true, data: expected})}
+    ExVCR.Config.filter_request_headers("Authorization")
+    use_cassette "anonymous" do
+      actual = Album.create("fake_client_id")
+
+      assert expected == actual
     end
-    :meck.expect(Imgur, :post!, stub)
-
-    actual = Album.create("12149508e8b758f")
-
-    assert expected == actual
+    ExVCR.Config.filter_request_headers(nil)
   end
 end
