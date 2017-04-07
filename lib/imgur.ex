@@ -1,4 +1,4 @@
-defmodule Imgurex.Imgur do
+defmodule Imgur do
   @moduledoc """
   Overrides for default HTTPoison methods to interact with Imgur API.
   """

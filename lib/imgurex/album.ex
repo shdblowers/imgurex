@@ -3,8 +3,6 @@ defmodule Imgurex.Album do
   Functions to manipulate albums on Imgur.
   """
 
-  alias Imgurex.Imgur
-
   @enforce_keys [:id]
 
   defstruct [:id, :deletehash]

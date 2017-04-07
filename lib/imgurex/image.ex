@@ -3,8 +3,6 @@ defmodule Imgurex.Image do
   Functions to upload and manipulate images on Imgur.
   """
 
-  alias Imgurex.Imgur
-
   @enforce_keys [:id, :link]
 
   defstruct [:id,
